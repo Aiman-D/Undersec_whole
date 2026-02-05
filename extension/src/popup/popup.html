@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=400, initial-scale=1.0">
+  <title>UnderSec</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-logo">
+        <img src="../icons/logo.png" alt="UnderSec Logo" class="logo-icon">
+        <h1>UnderSec</h1>
+      </div>
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-btn" title="Toggle Theme">🌓</button>
+        <span class="version" id="version">v0.1.0</span>
+      </div>
+    </header>
+
+    <!-- Status Section -->
+    <section class="status-section">
+      <div class="status-indicator" id="status-indicator">
+        <div class="status-dot active"></div>
+        <span id="status-text">Monitoring Active</span>
+      </div>
+    </section>
+
+    <!-- Label Selector -->
+    <section class="label-section">
+      <div class="current-label-container">
+        <span class="label-header">Sensitivity:</span>
+        <div id="active-label-badge" class="label-badge unknown">
+          <span class="label-icon">❓</span>
+          <span class="label-text">Unknown</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Risk Score -->
+    <section class="risk-section">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2>Last Risk Assessment</h2>
+        <span id="window-timer" style="font-size: 10px; color: #95a5a6;">Refreshes in --s</span>
+      </div>
+      <div class="risk-card" id="risk-card">
+        <div class="risk-score-container">
+          <div class="risk-score" id="risk-score">--</div>
+          <div class="risk-label" id="risk-label">No data yet</div>
+        </div>
+        <div class="risk-reasons" id="risk-reasons">
+          <p class="no-reasons">No recent activity detected</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Real-time Activity Stats -->
+    <section class="live-activity-section">
+      <div class="live-stats-header">
+        <h2>Live Activity (Current Window)</h2>
+        <div class="recording-pulse"></div>
+      </div>
+      <div class="live-stats-grid" id="live-stats">
+        <div class="stat-item">
+          <span class="stat-val" id="stat-visits">0</span>
+          <span class="stat-lbl">Visits</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val" id="stat-pastes">0</span>
+          <span class="stat-lbl">Pastes</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val" id="stat-uploads">0</span>
+          <span class="stat-lbl">Uploads</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Privacy Notice -->
+    <section class="privacy-section">
+      <div class="privacy-badge">
+        <span class="privacy-icon">🔐</span>
+        <div class="privacy-text">
+          <strong>Privacy First</strong>
+          <p>We collect counters only — never your content, clipboard, or files.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Actions -->
+    <footer class="footer">
+      <button id="settings-btn" class="btn btn-secondary" style="width: 100%;">⚙️ Settings</button>
+      <!-- Admin dashboard button - hidden, only accessible via Ctrl+Shift+9 -->
+      <button id="admin-btn" class="btn btn-primary" style="width: 100%; margin-top: 8px;">🔐 Admin
+        Dashboard</button>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>

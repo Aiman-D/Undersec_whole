@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnderSec - Activity Monitor</title>
+    <link rel="stylesheet" href="history.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="brand">
+                <img src="../icons/logo.png" alt="UnderSec Logo" class="logo-icon">
+                <div>
+                    <h1>Activity Monitor</h1>
+                    <p class="subtitle">Real-time behavioral risk tracking</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="refresh-btn" class="btn btn-icon" title="Refresh">
+                    <span class="icon">🔄</span>
+                </button>
+                <button id="export-btn" class="btn btn-primary">
+                    <span class="icon">📥</span> Export
+                </button>
+            </div>
+        </header>
+
+        <main class="dashboard-content">
+            <!-- Stats Strip -->
+            <section class="stats-strip">
+                <div class="stat-item" id="avg-risk-card">
+                    <div class="stat-icon risk">⚡</div>
+                    <div class="stat-content">
+                        <span class="stat-value">--%</span>
+                        <span class="stat-label">Avg Risk</span>
+                    </div>
+                </div>
+                <div class="stat-item" id="total-windows-card">
+                    <div class="stat-icon sessions">📊</div>
+                    <div class="stat-content">
+                        <span class="stat-value">--</span>
+                        <span class="stat-label">Sessions</span>
+                    </div>
+                </div>
+                <div class="stat-item" id="total-events-card">
+                    <div class="stat-icon events">🚨</div>
+                    <div class="stat-content">
+                        <span class="stat-value">--</span>
+                        <span class="stat-label">Alerts</span>
+                    </div>
+                </div>
+                <div class="stat-item" id="total-time-card">
+                    <div class="stat-icon time">⏱️</div>
+                    <div class="stat-content">
+                        <span class="stat-value">--</span>
+                        <span class="stat-label">Total Time</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Filters -->
+            <section class="filter-section">
+                <div class="filter-pills">
+                    <button class="filter-pill active" data-filter="all">All</button>
+                    <button class="filter-pill" data-filter="high">High Risk</button>
+                    <button class="filter-pill" data-filter="upload">Uploads</button>
+                    <button class="filter-pill" data-filter="paste">AI Pastes</button>
+                </div>
+                <span id="last-updated" class="update-time">Updated just now</span>
+            </section>
+
+            <!-- Activity Feed -->
+            <section class="activity-feed" id="activity-feed">
+                <div class="empty-state">
+                    <div class="empty-icon">📭</div>
+                    <h3>No Activity Yet</h3>
+                    <p>Events will appear here as they occur</p>
+                </div>
+            </section>
+
+            <!-- Export Footer -->
+            <footer class="export-footer">
+                <div class="export-info">
+                    <span class="icon">📊</span>
+                    <span>Export activity logs for compliance audits</span>
+                </div>
+                <button id="export-csv-btn" class="btn btn-secondary">Download CSV</button>
+            </footer>
+        </main>
+    </div>
+    <script src="history.js"></script>
+</body>
+
+</html>

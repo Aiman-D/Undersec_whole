@@ -1,0 +1,17 @@
+{
+  "WINDOW_MINUTES": 5,
+  "feature_keys": [
+    "paste_rate",
+    "upload_rate",
+    "unknown_ratio",
+    "activity_burst",
+    "public_ai_paste_count",
+    "personal_cloud_upload_attempt_count",
+    "unknown_domain_count",
+    "approved_work_domain_count",
+    "risky_domain_visit_count",
+    "off_hours_flag",
+    "new_device_flag",
+    "new_geo_flag"
+  ]
+}

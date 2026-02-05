@@ -1,0 +1,140 @@
+{
+  "manifest_version": 3,
+  "name": "UnderSec - Privacy-First Risk Awareness",
+  "version": "0.1.0",
+  "description": "Enterprise-grade, explainable, privacy-first browser extension that monitors behavioral signals and provides just-in-time risk interventions.",
+  "icons": {
+    "16": "icons/logo.png",
+    "32": "icons/logo.png",
+    "48": "icons/logo.png",
+    "128": "icons/logo.png"
+  },
+  "permissions": [
+    "storage",
+    "alarms",
+    "activeTab",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "*://chat.openai.com/*",
+    "*://chatgpt.com/*",
+    "*://claude.ai/*",
+    "*://gemini.google.com/*",
+    "*://copilot.microsoft.com/*",
+    "*://perplexity.ai/*",
+    "*://drive.google.com/*",
+    "*://dropbox.com/*",
+    "*://www.dropbox.com/*",
+    "*://onedrive.live.com/*",
+    "*://box.com/*",
+    "*://www.box.com/*",
+    "*://pastebin.com/*",
+    "*://wetransfer.com/*",
+    "*://notion.so/*",
+    "*://www.notion.so/*",
+    "*://slack.com/*",
+    "*://*.slack.com/*",
+    "*://jira.atlassian.com/*",
+    "*://*.atlassian.net/*",
+    "https://*.google-analytics.com/*",
+    "https://*.doubleclick.net/*",
+    "https://*.google.co.in/*",
+    "https://*.googleadservices.com/*",
+    "http://127.0.0.1:8000/*",
+    "http://localhost:8000/*",
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/logo.png",
+      "32": "icons/logo.png",
+      "48": "icons/logo.png"
+    },
+    "default_title": "UnderSec"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://chat.openai.com/*",
+        "*://chatgpt.com/*",
+        "*://claude.ai/*",
+        "*://gemini.google.com/*",
+        "*://copilot.microsoft.com/*",
+        "*://perplexity.ai/*"
+      ],
+      "js": [
+        "content/publicAi.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "*://drive.google.com/*",
+        "*://dropbox.com/*",
+        "*://www.dropbox.com/*",
+        "*://onedrive.live.com/*",
+        "*://box.com/*",
+        "*://www.box.com/*"
+      ],
+      "js": [
+        "content/personalCloud.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "*://pastebin.com/*",
+        "*://wetransfer.com/*"
+      ],
+      "js": [
+        "content/riskyShare.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "*://chatgpt.com/*",
+        "*://chat.openai.com/*",
+        "*://claude.ai/*",
+        "*://gemini.google.com/*",
+        "*://bard.google.com/*",
+        "*://copilot.microsoft.com/*",
+        "*://perplexity.ai/*",
+        "*://poe.com/*",
+        "*://you.com/*"
+      ],
+      "js": [
+        "content/aiSiteMonitor.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content/allUrls.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "intervention/*.js",
+        "intervention/*.css"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' http://127.0.0.1:8000 http://localhost:8000; img-src 'self' https://*.google.co.in https://*.gstatic.com https://*.googleusercontent.com;"
+  }
+}
